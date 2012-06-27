@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- careful about generated id, if you have some test regarding -->
+<dataset>
+
+     <SAZ_USER USER_ID="1"
+               ABOUT_ME="aaa aaaaaaaaaaa aaaaaaa"
+               EMAIL="sazzad@yahoo.com"
+               USER_NAME="sazzadur Rahaman"
+               PASSWORD="12345"
+               OCCUPATION="Engineer"/>
+
+    <SAZ_VCARD VCARD_ID="1"
+               VCARD_EMAIL="sazzad@yahoo.com"
+               VCARD_FULLNAME="sazzadur Rahaman"
+               VCARD_LAST_REVISION = "1987-11-14"
+               ADDITIONAL_NAME="a"
+               GIVEN_NAME="srahman"
+               PREFIX_NAME="a"
+               SUFFIX_NAME="a"
+               SUR_NAME="Sazzad"
+               VCARD_ORGANIZATION="Therap"
+               VCARD_PHOTO_URL="/sazzad.htm"
+               VCARD_VERSION="4.0"
+               VERSION="1"
+               USER_ID="1"
+               VCARD_TITLE="Engineer"/>
+
+    <SAZ_PHONENO PHONE_ID="1"
+                   PHONE_TYPE="Home"
+                      PHONE_VALUE="01913560933"
+                         VERSION="1"
+                            VCARD_ID="1"/>
+
+    <SAZ_ADDRESS ADDRESS_ID="1"
+                      ADDRESSLABEL="Mirpur Dhaka"
+                          ADDRESS_TYPE="house"
+                              ADDRESS_CODE="1216"
+                                  ADDRESS_COUNTRY="Bangladesh"
+                                      ADDRESS_EXT="123"
+                                            ADDRESS_LOCALITY="mirpur"
+                                                  ADDRESS_POBOX="a"
+                                                        ADDRESS_REGION="a"
+                                                              ADDRESS_STREET="1"
+                                                                     VERSION="1"
+                                                                           VCARD_ID="1" />
+
+</dataset>

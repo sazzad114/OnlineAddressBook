@@ -27,11 +27,17 @@ public class UserDaoTest extends UnitilsTestNG {
     public void testMappingToDatabase() {
         HibernateUnitils.assertMappingWithDatabaseConsistent();
     }
-
+     @Test
      public void testGetUserById(){
          User user = userDao.getUserById(1L);
          Assert.assertEquals(1L,user.getUserId());
      }
+
+    @Test
+    public void testGetUserByEmail(){
+        User user = userDao.getUserByEmail("sazzad@yahoo.com");
+        Assert.assertEquals(1L,user.getUserId());
+    }
 
 
 
