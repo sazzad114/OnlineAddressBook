@@ -7,78 +7,29 @@
 
     <bean id="dataSource" class="org.unitils.database.UnitilsDataSourceFactoryBean"/>
 
-    <bean class="net.therap.dao.CriteriaDaoImpl" id="criteriaDao">
-        <property name="sessionFactory" ref="sessionFactory"/>
-    </bean>
-
-    <bean class="net.therap.dao.AreaDaoImpl" id="areaDao">
-        <property name="sessionFactory" ref="sessionFactory"/>
-    </bean>
-
-    <bean class="net.therap.dao.StandardCriteriaDaoImpl" id="standardCriteriaDao">
-        <property name="sessionFactory" ref="sessionFactory"/>
-    </bean>
-
-    <bean class="net.therap.service.StandardCriteriaServiceImpl" id="standardCriteriaService">
-        <property name="standardCriteriaDao" ref="standardCriteriaDao"/>
-    </bean>
-
-    <bean class="net.therap.service.CustomerServiceImpl" id="customerService">
-        <property name="customerDao" ref="customerDao"/>
-        <property name="standardCriteriaDao" ref="standardCriteriaDao"/>
-    </bean>
-    <bean class="net.therap.service.CriteriaServiceImpl" id="criteriaService">
-        <property name="criteriaDao" ref="criteriaDao"/>
-        <property name="standardCriteriaDao" ref="standardCriteriaDao"/>
-    </bean>
-
-    <bean class="net.therap.dao.CustomerDaoImpl" id="customerDao">
-        <property name="sessionFactory" ref="sessionFactory"/>
-    </bean>
-
-    <bean class="net.therap.dao.FlatDaoImpl" id="flatDao">
-        <property name="sessionFactory" ref="sessionFactory"/>
-    </bean>
-
-    <bean class="net.therap.service.FlatServiceImpl" id="flatService">
-        <property name="flatDao" ref="flatDao"/>
-        <property name="standardCriteriaService" ref="standardCriteriaService"/>
-        <property name="buildingDao" ref="buildingDao"/>
-        <property name="standardCriteriaDao" ref="standardCriteriaDao"/>
-    </bean>
-
-    <bean class="net.therap.dao.BuildingDaoImpl" id="buildingDao">
+     <bean class="net.therap.dao.UserDaoImpl" name="userDao">
+         <property name="sessionFactory" ref="sessionFactory"/>
+     </bean>
+    <bean class="net.therap.dao.VcardDaoImpl" name="vcardDao">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
 
-    <bean class="net.therap.service.BuildingServiceImpl" id="buildingService">
-        <property name="buildingDao" ref="buildingDao"/>
-        <property name="areaDao" ref="areaDao"/>
-    </bean>
+    <!-- service beans -->
 
-    <bean class="net.therap.dao.FlatOwnerDaoImpl" id="flatOwnerDao">
-        <property name="sessionFactory" ref="sessionFactory"/>
-    </bean>
+     <bean class="net.therap.service.UserServiceImpl" name="userService">
+         <property name="userDao" ref="userDao"/>
+     </bean>
 
-    <bean class="net.therap.service.FlatOwnerServiceImpl" id="flatOwnerService">
-        <property name="flatOwnerDao" ref="flatOwnerDao"/>
-    </bean>
-
-    <bean class="net.therap.dao.UserDaoImpl" id="userDao">
-        <property name="sessionFactory" ref="sessionFactory"/>
-    </bean>
-
-    <bean class="net.therap.service.UserServiceImpl" id="userService">
-        <property name="userDao" ref="userDao"/>
-        <property name="flatOwnerDao" ref="flatOwnerDao"/>
-        <property name="customerDao" ref="customerDao"/>
-    </bean>
+     <bean class="net.therap.service.VcardServiceImpl" name="vcardService">
+         <property name="vcardDao" ref="vcardDao"/>
+         <property name="userDao" ref="userDao"/>
+     </bean>
 
 
     <bean class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean" id="sessionFactory">
         <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" addressLabel="net.therap.domain"/>
+        <property name="packagesToScan" value="net.therap.domain"/>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.hbm2ddl.auto">create-drop</prop>

@@ -57,11 +57,11 @@
 
     <!-- transaction related bean and configuration -->
 
-    <!--<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
-    </bean>-->
+    </bean>
 
-   <!-- <tx:advice id="txAdvice">
+    <tx:advice id="txAdvice">
         <tx:attributes>
             <tx:method name="save*" propagation="REQUIRED"/>
             <tx:method name="update*" propagation="REQUIRED"/>
@@ -71,7 +71,7 @@
 
     <aop:config>
         <aop:advisor pointcut="execution(* net.therap.service.*.*(..))" advice-ref="txAdvice"/>
-    </aop:config>-->
+    </aop:config>
 
 
 </beans>
