@@ -2,7 +2,7 @@ package net.therap.exception;
 
 /**
  * Created by IntelliJ IDEA.
- * User: ashraf
+ * User: sazzadur
  * Date: 6/14/12
  * Time: 11:04 AM
  * To change this template use File | Settings | File Templates.
