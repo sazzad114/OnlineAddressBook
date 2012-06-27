@@ -52,6 +52,7 @@
 
      <bean class="net.therap.service.VcardServiceImpl" name="vcardService">
          <property name="vcardDao" ref="vcardDao"/>
+         <property name="userDao" ref="userDao"/>
      </bean>
 
     <!-- transaction related bean and configuration -->

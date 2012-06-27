@@ -1,9 +1,13 @@
 package net.therap.service;
 
+import net.therap.dao.UserDao;
 import net.therap.dao.VcardDao;
+import net.therap.domain.ImportFileCommand;
 import net.therap.domain.User;
 import net.therap.domain.Vcard;
+import net.therap.utills.VcardUtills;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -17,6 +21,15 @@ import java.util.List;
 public class VcardServiceImpl implements VcardService{
 
     private VcardDao vcardDao;
+    private UserDao userDao;
+
+    public UserDao getUserDao() {
+        return userDao;
+    }
+
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
+    }
 
     public VcardDao getVcardDao() {
         return vcardDao;
@@ -48,6 +61,20 @@ public class VcardServiceImpl implements VcardService{
     public void deleteVcardByUser(User user,long vcardId){
         Vcard vcard = vcardDao.getVcardById(vcardId);
         vcardDao.deleteVcardByUser(user,vcard);
+    }
+
+    public List<Vcard> searchVcardByName(String name, User user) {
+       return vcardDao.searchVcardByName(name,user);
+    }
+
+    public void importVcardFromFile(ImportFileCommand command,User user) throws IOException {
+        byte [] vcardBytes = command.getFile().getBytes();
+        Vcard vcard = VcardUtills.byteArrayToVcard(vcardBytes);
+        user = userDao.getUserById(user.getUserId());
+        user.getVcardList().add(vcard);
+        vcard.setUser(user);
+
+        vcardDao.saveVcard(vcard);
     }
 
     public void updateVcardByUser(Vcard vcard){

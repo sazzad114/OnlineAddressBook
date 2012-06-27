@@ -23,4 +23,6 @@ public interface VcardDao {
     public void deleteVcardByUser(User user,Vcard vcard);
 
     public void updateVcardByUser(Vcard vcard);
+
+     public List<Vcard> searchVcardByName(String name, User user);
 }

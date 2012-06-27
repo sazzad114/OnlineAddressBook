@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
  * To change this template use File | Settings | File Templates.
  */
 public class ImportFileCommand {
+
     private MultipartFile file;
 
     public MultipartFile getFile() {

@@ -56,13 +56,13 @@ Released : 20120520
                     <li>
                         <h2>Search for</h2>
                         <ul>
-                            <li><a href="#">By Name</a></li>
-                            <li><a href="#">By Email</a></li>
+                            <li><a href="/OnlineAddressBook/app/search.htm">By Name</a></li>
+
                         </ul>
                         <h2>Add new</h2>
                         <ul>
                             <li><a href="/OnlineAddressBook/app/vcard/create.htm">Add new Address</a></li>
-                            <li><a href="#">Import Address</a></li>
+                            <li><a href="/OnlineAddressBook/app/import.htm">Import Address</a></li>
                         </ul>
                     </li>
                 </ul>

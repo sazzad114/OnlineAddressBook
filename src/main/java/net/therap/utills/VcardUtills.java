@@ -131,7 +131,7 @@ public class VcardUtills {
         return vcardString.getBytes();
     }
 
-    public Vcard byteArrayToVcard(byte[] vcardByteArray) {
+    public static Vcard byteArrayToVcard(byte[] vcardByteArray) {
         String vcardString = new String(vcardByteArray);
         Vcard vcardObj = new Vcard();
         String[] temp = vcardString.split("\n");
@@ -153,9 +153,9 @@ public class VcardUtills {
                 Name name = new Name();
                 name.setSurName(surNameStrings[1]);
                 name.setGivenName(surNameStrings[2]);
-                name.setAdditionalName(surNameStrings[3]);
+              /*  name.setAdditionalName(surNameStrings[3]);
                 name.setPrefixName(surNameStrings[4]);
-                name.setSuffixName(surNameStrings[5]);
+                name.setSuffixName(surNameStrings[5]);*/
                 vcardObj.setName(name);
 
             } else if (temp[i].contains("ORG:")) {
@@ -180,8 +180,9 @@ public class VcardUtills {
                 phoneNo.setPhoneNoType(telStrings[3]);
                 phoneNo.setPhoneNoValue(telStrings[6]);
                 vcardObj.getPhoneNoList().add(phoneNo);
+                phoneNo.setVcard(vcardObj);
 
-            } else if (temp[i].contains("ADR;")) {
+            } else if (temp[i].contains("ADR;TYPE")) {
 
                 String[] addressStrings = temp[i].split("[=;\"]");
                 Address address = new Address();
@@ -189,12 +190,12 @@ public class VcardUtills {
                 String label = addressStrings[5];
                 int j;
                 for (j = 1; temp[i + j].indexOf(":") < 0; j++) {
-                    label += "\n";
+                    label += " ";
                     label += temp[i + j];
                 }
                 address.setAddressLabel( label);
 
-                if (temp[i + j].indexOf(":") == 0) {
+                if (temp[i + j].indexOf(":") >= 0) {
 
                     String[] valueStrings = temp[i + j].split("[:;]");
                     address.setPobox(valueStrings[1]);
@@ -204,9 +205,10 @@ public class VcardUtills {
                     address.setRegion(valueStrings[5]);
                     address.setCode(valueStrings[6]);
                     address.setCountry(valueStrings[7]);
-                    vcardObj.getAddressList().add(address);
 
                 }
+                vcardObj.getAddressList().add(address);
+                address.setVcard(vcardObj);
 
             } else if (temp[i].contains("EMAIL:")) {
 

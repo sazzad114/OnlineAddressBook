@@ -1,8 +1,10 @@
 package net.therap.service;
 
+import net.therap.domain.ImportFileCommand;
 import net.therap.domain.User;
 import net.therap.domain.Vcard;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -22,6 +24,10 @@ public interface VcardService {
     public void deleteVcardByUser(User user,long vcardId);
 
     public void updateVcardByUser(Vcard vcard);
+
+    public void importVcardFromFile(ImportFileCommand command,User user) throws IOException;
+
+    public List<Vcard> searchVcardByName(String name,User user);
 
 
 }

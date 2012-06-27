@@ -1,17 +1,22 @@
 package net.therap.controller;
 
 import net.therap.domain.ImportFileCommand;
+import net.therap.domain.User;
 import net.therap.domain.Vcard;
 import net.therap.exception.ApplicationException;
 import net.therap.service.VcardService;
 import net.therap.utills.VcardUtills;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -75,10 +80,14 @@ public class VcardExportImportController {
     }
 
     @RequestMapping(value = "/import.htm", method = RequestMethod.POST)
-    public String importPostAction(Map<String, Object> model, HttpServletRequest request) {
-        model.put("importFile", new ImportFileCommand());
-        model.put("title", "Import File:");
-        return "common/createflat";
+    public String importPostAction(@ModelAttribute("importFile") ImportFileCommand importFileCommand,HttpServletRequest request) {
+        try {
+            User user = (User)request.getSession().getAttribute("user");
+            vcardService.importVcardFromFile(importFileCommand,user);
+        } catch (IOException e) {
+            throw new ApplicationException("Unable to read the File");
+        }
+        return "redirect:/app/vcard/viewlist.htm";
 
     }
 }

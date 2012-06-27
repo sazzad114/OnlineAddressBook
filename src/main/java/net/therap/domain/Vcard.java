@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -37,9 +38,9 @@ public class Vcard {
     private String title;
     private String photoUrl;
     @Valid
-    private List<PhoneNo> phoneNoList;
+    private List<PhoneNo> phoneNoList = new ArrayList<PhoneNo>();
     @Valid
-    private List<Address> addressList;
+    private List<Address> addressList = new ArrayList<Address>();
 
     @Email(message = "email should follow the format email@domain.com")
     @Size(min = 10, max = 50, message = "within 10 to 50 characters")

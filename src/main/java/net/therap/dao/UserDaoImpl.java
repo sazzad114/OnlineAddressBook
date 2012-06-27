@@ -21,6 +21,10 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao{
         session.flush();
     }
 
+    public User getUserById(long id) {
+        return getHibernateTemplate().get(User.class,id);
+    }
+
     public User getUserByEmail(String email) {
          Object[] objects = new Object[1];
         objects[0] = email;

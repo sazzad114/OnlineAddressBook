@@ -13,4 +13,6 @@ public interface UserDao {
     public User getUserByEmail(String email);
 
     public void saveUser(User user);
+
+    public User getUserById(long id);
 }

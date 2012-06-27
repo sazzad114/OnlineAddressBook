@@ -18,7 +18,7 @@ public class Address {
    //@Size(min = 5, max = 50, message = "within 5 to 50 characters")
     private String addressType;
 
-   @Size(min = 5, max = 50, message = "within 5 to 50 characters")
+   @Size(min = 5, max = 300, message = "within 5 to 300 characters")
     private String addressLabel;
     //@Pattern(regexp = "([a-zA-Z0-9][a-zA-Z0-9]*\\s)*[a-zA-Z0-9]*", message = "allow only alpha numeric character and no consecutive spaces")
     //@Size(min = 5, max = 50, message = "within 5 to 50 characters")

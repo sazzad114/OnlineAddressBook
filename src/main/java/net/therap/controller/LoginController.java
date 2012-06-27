@@ -51,7 +51,7 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/login.htm", method = RequestMethod.GET)
-    public String getLoginAction() {
+    public String getLoginAction(){
         return "login";
     }
 

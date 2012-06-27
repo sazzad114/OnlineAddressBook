@@ -37,6 +37,10 @@ public class VcardDaoImpl extends HibernateDaoSupport implements VcardDao{
         session.flush();
     }
 
+    public List<Vcard> searchVcardByName(String name, User user) {
+        return getHibernateTemplate().find("select vcard from Vcard as vcard where vcard.fullName LIKE ? and vcard.user = ?",new Object[]{"%"+name+"%",user});
+    }
+
     public void deleteVcardByUser(User user,Vcard vcard){
 
         Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();
