@@ -12,6 +12,8 @@ import net.therap.domain.User;
 public interface UserService {
 
     public User authenticateUser(String email,String password);
+
     public boolean isEmailExists(String email);
+
     public void saveUser(User user);
 }

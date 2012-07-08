@@ -23,20 +23,27 @@ public class VcardUtills {
         if (vcard.getName().getSurName() != null) {
             vcardString += vcard.getName().getSurName();
         }
+
         vcardString += ";";
+
         if (vcard.getName().getGivenName() != null) {
             vcardString += vcard.getName().getGivenName();
         }
+
         vcardString += ";";
 
         if (vcard.getName().getAdditionalName() != null) {
             vcardString += vcard.getName().getAdditionalName();
         }
+
         vcardString += ";";
+
         if (vcard.getName().getPrefixName() != null) {
             vcardString += vcard.getName().getPrefixName();
         }
+
         vcardString += ";";
+
         if (vcard.getName().getSuffixName() != null) {
             vcardString += vcard.getName().getSuffixName();
         }
@@ -120,13 +127,15 @@ public class VcardUtills {
             }
 
         }
+
         vcardString += "\nEMAIL:";
+
         if (vcard.getEmail() != null) {
             vcardString += vcard.getEmail();
         }
 
         vcardString += "\nREV:";
-        vcardString += vcard.getLastRevision().toString();//.replace("-",null).replace(" ",null).replace(":",null).replace(".","T")+"Z";
+        vcardString += vcard.getLastRevision().toString();
         vcardString += "\nEND:VCARD";
         return vcardString.getBytes();
     }

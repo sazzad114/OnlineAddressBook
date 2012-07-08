@@ -24,7 +24,8 @@ public class UserServiceImpl implements UserService{
     public User authenticateUser(String email, String password) {
 
         User user = userDao.getUserByEmail(email);
-        if(user.getPassword().equals(password)){
+
+        if(user != null && user.getPassword().equals(password)){
             return user;
         }
         else {

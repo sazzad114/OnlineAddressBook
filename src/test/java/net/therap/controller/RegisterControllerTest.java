@@ -85,7 +85,7 @@ public class RegisterControllerTest extends TestCase {
 
         EasyMock.expect(userService.isEmailExists("sazzad14@yahoo.com")).andReturn(false);
         EasyMock.expect(bindingResult.hasErrors()).andReturn(true);
-        bindingResult.rejectValue("user.confirmPassword", "password.mismatch");
+        bindingResult.rejectValue("confirmPassword", "password.mismatch");
         EasyMock.expectLastCall().times(1);
         EasyMock.replay(userService);
         EasyMock.replay(bindingResult);

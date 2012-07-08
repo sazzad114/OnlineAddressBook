@@ -43,6 +43,7 @@ public class User {
     @SequenceGenerator(name = "SAZ_USER_SEQ", sequenceName = "SAZ_USER_SEQ")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "SAZ_USER_SEQ")
     @Column(name = "USER_ID")
+
     public long getUserId() {
         return userId;
     }

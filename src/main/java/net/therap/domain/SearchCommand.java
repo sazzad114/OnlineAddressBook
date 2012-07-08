@@ -18,6 +18,4 @@ public class SearchCommand {
     public void setSearchString(String searchString) {
         this.searchString = searchString;
     }
-
-
 }

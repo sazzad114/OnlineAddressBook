@@ -44,11 +44,11 @@ public class RegistrationController {
     public String saveUserAction(@Valid @ModelAttribute("userCommand") User user, BindingResult bindingResult) {
 
         if (userService.isEmailExists(user.getEmail()) == true) {
-            bindingResult.rejectValue("user.email", "email.exists");
+            bindingResult.rejectValue("email", "email.exists");
         }
 
         if (!user.getPassword().equals(user.getConfirmPassword())) {
-            bindingResult.rejectValue("user.confirmPassword", "password.mismatch");
+            bindingResult.rejectValue("confirmPassword", "password.mismatch");
         }
 
         if (bindingResult.hasErrors()) {

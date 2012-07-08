@@ -35,8 +35,9 @@ public class LoginController {
     @RequestMapping(value = "/login.htm", method = RequestMethod.POST)
     public String loginAction(HttpServletRequest request, HttpServletResponse response) {
 
-      User user = userService.authenticateUser(request.getParameter("email"), request.getParameter("password"));
-      if (user == null) {
+        User user = userService.authenticateUser(request.getParameter("email"), request.getParameter("password"));
+
+        if (user == null) {
             if (request.getHeader("Referer").contains("errorcode")) {
                 return "redirect:" + request.getHeader("Referer");
             }
@@ -44,14 +45,14 @@ public class LoginController {
 
         } else {
 
-                request.getSession().setAttribute("user", user);
-                return "redirect:" + "/app/home.htm";
-      }
+            request.getSession().setAttribute("user", user);
+            return "redirect:" + "/app/home.htm";
+        }
 
     }
 
     @RequestMapping(value = "/login.htm", method = RequestMethod.GET)
-    public String getLoginAction(){
+    public String getLoginAction() {
         return "login";
     }
 
